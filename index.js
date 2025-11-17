@@ -8,12 +8,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/api/products',(req,res)=>{
-    const newproduct=products.map((value)=>{
-const{id,name}=value
-        return{
-            id,name
-        }
-    })
+    const newproduct=products.find((value)=>value.id==2)
     res.send(newproduct)
 })
 
