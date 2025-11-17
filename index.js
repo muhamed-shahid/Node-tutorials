@@ -7,8 +7,11 @@ app.get('/',(req,res)=>{
     res.send('<a href="/api/products">products</a>')
 })
 
-app.get('/api/products',(req,res)=>{
-    const newproduct=products.find((value)=>value.id==2)
+app.get('/api/products/:ProductID',(req,res)=>{
+    // fetching id from client
+    const {ProductID} = req.params
+    console.log(req.params);
+    const newproduct=products.find((value)=>value.id===Number(ProductID))
     res.send(newproduct)
 })
 
