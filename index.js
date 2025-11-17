@@ -4,7 +4,17 @@ const products=require('./data.js')
 const app = express()
 
 app.get('/',(req,res)=>{
-    res.json(products)
+    res.send('<a href="/api/products">products</a>')
+})
+
+app.get('/api/products',(req,res)=>{
+    const newproduct=products.map((value)=>{
+const{id,name}=value
+        return{
+            id,name
+        }
+    })
+    res.send(newproduct)
 })
 
 app.listen(process.env.PORT,()=>{
