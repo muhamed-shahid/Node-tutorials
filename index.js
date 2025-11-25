@@ -3,18 +3,24 @@ const dotenv = require('dotenv').config()
 const products=require('./data.js')
 const app = express()
 
-app.get('/',(req,res)=>{
-    res.send('<a href="/api/products">products</a>')
+
+// Declaration of middleware in same page
+
+const logger=(req,res,next)=>{
+    console.log("middleware");
+    next()
+    
+}
+
+app.get('/',logger,(req,res)=>{
+    res.send("HOME PAGEEE")
+
 })
 
-app.get('/api/products/:ProductID',(req,res)=>{
-    // fetching id from client
-    const {ProductID} = req.params
-    console.log(req.params);
-    const newproduct=products.find((value)=>value.id===Number(ProductID))
-    res.send(newproduct)
-})
 
+app.get('/about',logger,(req,res)=>{
+    res.send("About page")
+})
 app.listen(process.env.PORT,()=>{
     console.log("server running")
 })

@@ -4,6 +4,8 @@ const dotenv = require('dotenv').config()
 
 app.get('/search',(req,res)=>{
     const keyword = req.query.keyword
+
+    // req.query holds all query parameters
    
     if(!keyword){
       return  res.send('Enter a keyword')
