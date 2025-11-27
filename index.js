@@ -7,8 +7,14 @@ const app = express()
 
 
 
-app.use([logger],[authorize])
+app.use(express.json())
 
+
+app.post('/',(req,res)=>{
+    console.log(req.body);
+    
+    res.send("POSTED")
+})
 app.get('/',(req,res)=>{
     res.send("HOME PAGEEE")
 
